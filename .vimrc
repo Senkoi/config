@@ -129,6 +129,12 @@ Plug 'mileszs/ack.vim'
 Plug 'flazz/vim-colorschemes'
 
 Plug 'dense-analysis/ale'
+
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'vim-airline/vim-airline'
+
+Plug 'vim-airline/vim-airline-themes'
 " Initialize plugin system
 call plug#end()
 
@@ -145,4 +151,8 @@ nmap gf <Plug>(easymotion-overwin-f2)
 
 "color theam
 colorscheme candy
+
+" airline
+let g:airline_theme='base16'
+let g:airline_experimental = 1
 
