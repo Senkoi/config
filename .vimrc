@@ -128,6 +128,7 @@ Plug 'mileszs/ack.vim'
 
 Plug 'flazz/vim-colorschemes'
 
+Plug 'dense-analysis/ale'
 " Initialize plugin system
 call plug#end()
 
