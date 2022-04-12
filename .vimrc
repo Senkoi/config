@@ -84,6 +84,8 @@ set shiftwidth=4
 set tabstop=4
 set autoindent
 set noexpandtab
+set term=screen-256color
+set encoding=utf-8
 
 
 
@@ -153,6 +155,9 @@ nmap gf <Plug>(easymotion-overwin-f2)
 colorscheme candy
 
 " airline
-let g:airline_theme='base16'
+let laststatus = 2
+let g:airline_theme='badwolf'
 let g:airline_experimental = 1
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enable = 1
 
