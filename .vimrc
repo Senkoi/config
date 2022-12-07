@@ -87,6 +87,8 @@ set noexpandtab
 set term=screen-256color
 set encoding=utf-8
 
+nnoremap <C-Tab> :tabn<CR>
+nnoremap <C-S-Tab> :tabp<CR>
 
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -137,6 +139,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 
 Plug 'vim-airline/vim-airline-themes'
+
+Plug 'voldikss/vim-translator'
+
 " Initialize plugin system
 call plug#end()
 
@@ -161,3 +166,9 @@ let g:airline_experimental = 1
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enable = 1
 
+" NERDTree
+nnoremap <C-n> :NERDTree<CR>
+
+" vim-translator
+nnoremap <silent> <C-i> :TranslateW<CR>
+vnoremap <silent> <C-i> :TranslateW<CR>
