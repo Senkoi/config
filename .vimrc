@@ -137,6 +137,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 
 Plug 'vim-airline/vim-airline-themes'
+
+Plug 'voldikss/vim-translator'
+
 " Initialize plugin system
 call plug#end()
 
@@ -161,3 +164,17 @@ let g:airline_experimental = 1
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enable = 1
 
+" translate
+" Echo translation in the cmdline
+" nmap <silent> <Leader>t <Plug>Translate
+" vmap <silent> <Leader>t <Plug>TranslateV
+""" Display translation in a window
+nnoremap <silent> <C-i> <Plug>TranslateW
+"vnoremap <C-i>    :echoe "Use k"<CR>
+vnoremap <silent> <C-i> <Plug>TranslateWV
+" vmap <silent> <Leader>w <Plug>TranslateWV
+" Replace the text with translation
+" nmap <silent> <Leader>r <Plug>TranslateR
+" vmap <silent> <Leader>r <Plug>TranslateRV
+" Translate the text in clipboard
+" nmap <silent> <Leader>x <Plug>TranslateX
