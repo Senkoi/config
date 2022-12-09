@@ -87,6 +87,8 @@ set noexpandtab
 set term=screen-256color
 set encoding=utf-8
 
+nnoremap <C-Tab> :tabn<CR>
+nnoremap <C-S-Tab> :tabp<CR>
 
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -164,7 +166,8 @@ let g:airline_experimental = 1
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enable = 1
 
-" translate
+<<<<<<< HEAD
+" vim-translator
 " Echo translation in the cmdline
 " nmap <silent> <Leader>t <Plug>Translate
 " vmap <silent> <Leader>t <Plug>TranslateV
@@ -178,3 +181,7 @@ vnoremap <silent> <C-i> <Plug>TranslateWV
 " vmap <silent> <Leader>r <Plug>TranslateRV
 " Translate the text in clipboard
 " nmap <silent> <Leader>x <Plug>TranslateX
+=======
+" NERDTree
+nnoremap <C-n> :NERDTree<CR>
+>>>>>>> 16c12ebbd230a97eb3f51757951803f05aa78120
