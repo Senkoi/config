@@ -102,13 +102,10 @@ set wildmode=longest:list,full
 nnoremap <C-Tab> :tabn<CR>
 nnoremap <C-S-Tab> :tabp<CR>
 
-<<<<<<< HEAD
 " semicolon end of a line
 " nnoremap ;; A;<Esc>
 inoremap ;; <C-o>A;
-=======
 "--------------------------------------------------------------------------------------------------
->>>>>>> ab4750851cda22d3195b8ddc5037c34d707f11b6
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
