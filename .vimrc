@@ -79,6 +79,11 @@ inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 set softtabstop=4
 set shiftwidth=4
 set tabstop=4
@@ -87,7 +92,10 @@ set noexpandtab
 set term=screen-256color
 set encoding=utf-8
 
+nnoremap <C-Tab> :tabn<CR>
+nnoremap <C-S-Tab> :tabp<CR>
 
+"--------------------------------------------------------------------------------------------------
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -137,8 +145,20 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 
 Plug 'vim-airline/vim-airline-themes'
+
+Plug 'voldikss/vim-translator'
+
+Plug 'mattn/emmet-vim'
+
 " Initialize plugin system
 call plug#end()
+
+"auto-pairs
+execute "set <M-B>=\eB"
+"execute "set <M-e>=\ee"
+let g:AutoPairsFlyMode = 1
+let g:AutoPairsShortcutBackInsert = '<M-B>'
+
 
 "easy-motion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -161,3 +181,13 @@ let g:airline_experimental = 1
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enable = 1
 
+"NERDTree
+nnoremap <C-n> :NERDTree<CR>
+
+"vim-translator
+nnoremap <silent> <C-i> :TranslateW<CR>
+vnoremap <silent> <C-i> :TranslateW<CR>
+
+" -----------------------------------------------------------------------------
+"  html
+autocmd FileType xml,html inoremap </ </<C-x><C-o>
