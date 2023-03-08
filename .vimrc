@@ -86,10 +86,20 @@ set autoindent
 set noexpandtab
 set term=screen-256color
 set encoding=utf-8
+set undofile
+set backupdir=~/.vim/.backup//
+set directory=~/.vim/.swp//
+set undodir=~/.vim/.undo//
+set history=5000
+set wildmenu
+set wildmode=longest:list,full
 
 nnoremap <C-Tab> :tabn<CR>
 nnoremap <C-S-Tab> :tabp<CR>
 
+" semicolon end of a line
+" nnoremap ;; A;<Esc>
+inoremap ;; <C-o>A;
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -142,6 +152,8 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'voldikss/vim-translator'
 
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer',  'for': ['c', 'cpp', 'h']  }
+
 " Initialize plugin system
 call plug#end()
 
@@ -166,7 +178,6 @@ let g:airline_experimental = 1
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enable = 1
 
-<<<<<<< HEAD
 " vim-translator
 " Echo translation in the cmdline
 " nmap <silent> <Leader>t <Plug>Translate
@@ -181,7 +192,12 @@ vnoremap <silent> <C-i> <Plug>TranslateWV
 " vmap <silent> <Leader>r <Plug>TranslateRV
 " Translate the text in clipboard
 " nmap <silent> <Leader>x <Plug>TranslateX
-=======
+"
 " NERDTree
 nnoremap <C-n> :NERDTree<CR>
->>>>>>> 16c12ebbd230a97eb3f51757951803f05aa78120
+
+"YCM
+let g:ycm_semantic_triggers = {
+			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+			\ 'cs,lua,javascript': ['re!\w{2}'],
+			\ }
