@@ -148,8 +148,11 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'voldikss/vim-translator'
 
+<<<<<<< HEAD
 Plug 'mattn/emmet-vim'
 
+=======
+>>>>>>> 3719ffe649e20da3edebe7cdd08d6d2be55444c1
 " Initialize plugin system
 call plug#end()
 
@@ -181,12 +184,25 @@ let g:airline_experimental = 1
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enable = 1
 
+
+" vim-translator
+" Echo translation in the cmdline
+" nmap <silent> <Leader>t <Plug>Translate
+" vmap <silent> <Leader>t <Plug>TranslateV
+""" Display translation in a window
+nnoremap <silent> <C-i> <Plug>TranslateW
+"vnoremap <C-i>    :echoe "Use k"<CR>
+vnoremap <silent> <C-i> <Plug>TranslateWV
+" vmap <silent> <Leader>w <Plug>TranslateWV
+" Replace the text with translation
+" nmap <silent> <Leader>r <Plug>TranslateR
+" vmap <silent> <Leader>r <Plug>TranslateRV
+" Translate the text in clipboard
+" nmap <silent> <Leader>x <Plug>TranslateX
+
 "NERDTree
 nnoremap <C-n> :NERDTree<CR>
 
-"vim-translator
-nnoremap <silent> <C-i> :TranslateW<CR>
-vnoremap <silent> <C-i> :TranslateW<CR>
 
 " -----------------------------------------------------------------------------
 "  html
