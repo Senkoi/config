@@ -79,6 +79,11 @@ inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 set softtabstop=4
 set shiftwidth=4
 set tabstop=4
@@ -97,9 +102,13 @@ set wildmode=longest:list,full
 nnoremap <C-Tab> :tabn<CR>
 nnoremap <C-S-Tab> :tabp<CR>
 
+<<<<<<< HEAD
 " semicolon end of a line
 " nnoremap ;; A;<Esc>
 inoremap ;; <C-o>A;
+=======
+"--------------------------------------------------------------------------------------------------
+>>>>>>> ab4750851cda22d3195b8ddc5037c34d707f11b6
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -154,8 +163,17 @@ Plug 'voldikss/vim-translator'
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer',  'for': ['c', 'cpp', 'h']  }
 
+Plug 'mattn/emmet-vim'
+
 " Initialize plugin system
 call plug#end()
+
+"auto-pairs
+execute "set <M-B>=\eB"
+"execute "set <M-e>=\ee"
+let g:AutoPairsFlyMode = 1
+let g:AutoPairsShortcutBackInsert = '<M-B>'
+
 
 "easy-motion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -199,5 +217,9 @@ nnoremap <C-n> :NERDTree<CR>
 "YCM
 let g:ycm_semantic_triggers = {
 			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-			\ 'cs,lua,javascript': ['re!\w{2}'],
+			\ 'cs,lua,javascript,html': ['re!\w{2}'],
 			\ }
+
+" -----------------------------------------------------------------------------
+"  html
+autocmd FileType xml,html inoremap </ </<C-x><C-o>
