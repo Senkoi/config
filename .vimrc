@@ -9,6 +9,7 @@
 " loaded some other way (e.g. saved as `foo`, and then Vim started with
 " `vim -u foo`).
 set nocompatible
+let mapleader=";"
 
 " Turn on syntax highlighting.
 syntax on
@@ -158,9 +159,11 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'voldikss/vim-translator'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer',  'for': ['c', 'cpp', 'h']  }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer',  'for': ['c', 'cpp', 'python', 'sh', 'zsh']  }
 
 Plug 'mattn/emmet-vim'
+
+Plug 'alvan/vim-closetag'
 
 " Initialize plugin system
 call plug#end()
@@ -198,25 +201,58 @@ let g:airline#extensions#tabline#enable = 1
 " nmap <silent> <Leader>t <Plug>Translate
 " vmap <silent> <Leader>t <Plug>TranslateV
 """ Display translation in a window
-nnoremap <silent> <C-i> <Plug>TranslateW
+nnoremap <silent> <C-t> <Plug>TranslateW
 "vnoremap <C-i>    :echoe "Use k"<CR>
-vnoremap <silent> <C-i> <Plug>TranslateWV
+vnoremap <silent> <C-t> <Plug>TranslateWV
 " vmap <silent> <Leader>w <Plug>TranslateWV
 " Replace the text with translation
 " nmap <silent> <Leader>r <Plug>TranslateR
 " vmap <silent> <Leader>r <Plug>TranslateRV
 " Translate the text in clipboard
 " nmap <silent> <Leader>x <Plug>TranslateX
+"vim-closetag'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+let g:closetag_filetypes = 'html,xhtml,phtml'
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+let g:closetag_emptyTags_caseSensitive = 1
+let g:closetag_regions = {
+\ 'typescript.tsx': 'jsxRegion,tsxRegion',
+\ 'javascript.jsx': 'jsxRegion',
+\ 'typescriptreact': 'jsxRegion,tsxRegion',
+\ 'javascriptreact': 'jsxRegion',
+\ }
+let g:closetag_shortcut = '>'
+let g:closetag_close_shortcut = '<leader>>'
 "
 " NERDTree
-nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 "YCM
 let g:ycm_semantic_triggers = {
-			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-			\ 'cs,lua,javascript,html': ['re!\w{2}'],
-			\ }
-
+		\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+		\ 'cs,lua,javascript,html': ['re!\w{2}'],
+		\ }
+let g:ycm_confirm_extra_conf=0
+set completeopt=longest,menu
+let g:ycm_seed_indentifiers_with_synatx=1
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+nnoremap <F12> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " -----------------------------------------------------------------------------
 "  html
 autocmd FileType xml,html inoremap </ </<C-x><C-o>
+
+" ALE
+let g:ale_sign_error = 'x'
+let g:ale_sign_warning = '!'
+let g:ale_set_highlights = 0
+let g:ale_lint_on_enter = 0
+nnoremap <Leader>ap <Plug>(ale_previous_wrap)
+nnoremap <Leader>an <Plug>(ale_next_wrap)
+nnoremap <Leader>at :ALEToggle<CR>
+nnoremap <Leader>ad :ALEDetail<CR>
+let g:ale_linters = {
+			\ 'c++': ['clang'],
+			\ 'c': ['clang'],
+			\ 'python': ['pylint'],
+			\ }
