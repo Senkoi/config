@@ -201,9 +201,9 @@ let g:airline#extensions#tabline#enable = 1
 " nmap <silent> <Leader>t <Plug>Translate
 " vmap <silent> <Leader>t <Plug>TranslateV
 """ Display translation in a window
-nnoremap <silent> <C-t> <Plug>TranslateW
+nmap <silent> <C-t> <Plug>TranslateW
 "vnoremap <C-i>    :echoe "Use k"<CR>
-vnoremap <silent> <C-t> <Plug>TranslateWV
+vmap <silent> <C-t> <Plug>TranslateWV
 " vmap <silent> <Leader>w <Plug>TranslateWV
 " Replace the text with translation
 " nmap <silent> <Leader>r <Plug>TranslateR
@@ -237,7 +237,8 @@ let g:ycm_confirm_extra_conf=0
 set completeopt=longest,menu
 let g:ycm_seed_indentifiers_with_synatx=1
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-nnoremap <F12> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>r :YcmCompleter GoToReferences<CR>
 " -----------------------------------------------------------------------------
 "  html
 autocmd FileType xml,html inoremap </ </<C-x><C-o>
@@ -246,9 +247,13 @@ autocmd FileType xml,html inoremap </ </<C-x><C-o>
 let g:ale_sign_error = 'x'
 let g:ale_sign_warning = '!'
 let g:ale_set_highlights = 0
-let g:ale_lint_on_enter = 0
-nnoremap <Leader>ap <Plug>(ale_previous_wrap)
-nnoremap <Leader>an <Plug>(ale_next_wrap)
+" let g:ale_lint_on_enter = 0
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'
+let g:ale_statusline_format = ['x %d', '! %d', 'y OK']
+nmap <Leader>ap <Plug>(ale_previous_wrap)
+nmap <Leader>an <Plug>(ale_next_wrap)
 nnoremap <Leader>at :ALEToggle<CR>
 nnoremap <Leader>ad :ALEDetail<CR>
 let g:ale_linters = {
