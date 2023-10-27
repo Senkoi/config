@@ -139,13 +139,17 @@ call plug#begin()
 " Unmanaged plugin (manually installed and updated)
 Plug '~/my-prototype-plugin'
 
-Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
+" Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
+Plug 'junegunn/fzf.vim'
 
 Plug 'https://github.com/easymotion/vim-easymotion.git'
 
 Plug 'preservim/nerdtree'
 
-Plug 'mileszs/ack.vim'
+" Plug 'mileszs/ack.vim'
 
 Plug 'flazz/vim-colorschemes'
 
@@ -185,6 +189,10 @@ nmap gf <Plug>(easymotion-overwin-f2)
 
 "CtrlP
 "CtrlPlet g:ctrlp_cmd = 'ff'
+
+"fzf
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <Leader>f :Rg<CR>
 
 "color theam
 colorscheme candy
